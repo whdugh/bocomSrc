@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UpdSqls>
+	<Sql>ALTER TABLE `TRAFFIC_EVENT_INFO` ADD INDEX PATH_INDEX (`PICPATH`);</Sql>
+	<Sql>ALTER TABLE `NUMBER_PLATE_INFO` ADD INDEX PATH_INDEX (`PICPATH`);</Sql>
+	<Sql>ALTER TABLE `SYSTEM_EVENT_INFO` ADD INDEX STATUS_INDEX (`STATUS`,`TIME`);</Sql>
+	<Sql>ALTER TABLE `TRAFFIC_STATISTIC_INFO` ADD INDEX STATUS_INDEX (`STATUS`,`TIME`);</Sql>
+	<Sql>ALTER TABLE `NUMBER_PLATE_INFO` ADD INDEX STATUS_INDEX (`STATUS`,`TIME`);</Sql>
+	<Sql>ALTER TABLE `TRAFFIC_EVENT_INFO` ADD INDEX STATUS_INDEX (`STATUS`,`BEGIN_TIME`);</Sql>
+	<Sql>CREATE TABLE `VIDEO_FILE_INFO` (`ID` bigint(20) NOT NULL auto_increment,`CHANNEL` int(11) default NULL,`BEGIN_TIME` datetime default NULL,`BEGIN_MITIME` int(11) default NULL,`END_TIME` datetime default NULL,`END_MITIME` int(11) default NULL,`PATH` varchar(256) default NULL,`VIDEO_TYPE` int(11) default NULL,`STATUS` tinyint(4) default NULL,PRIMARY KEY  (`ID`),KEY `TIME_INDEX` (`BEGIN_TIME`),KEY `PATH_INDEX` (`PATH`),KEY `STATUS_INDEX` (`STATUS`,`BEGIN_TIME`)) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</Sql>
+	<Sql>alter table CHAN_INFO add CHAN_PRESET int(11);</Sql>
+	<Sql>alter table CHAN_INFO add MONITOR_ID int(11);</Sql>
+	<Sql>alter table CHAN_INFO add VIDEO_ID int(11);</Sql>
+	<Sql>alter table CHAN_INFO add USERNAME varchar(16);</Sql>
+	<Sql>alter table CHAN_INFO add PASSWD varchar(16);</Sql>
+	<Sql>CREATE TABLE `PIC_INFO` (  `ID` bigint(20) NOT NULL auto_increment,  `PIC_ID` bigint(20) default NULL,  PRIMARY KEY  (`ID`)) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</Sql>
+	<Sql>INSERT INTO `PIC_INFO` VALUES ('1', '1');</Sql>
+	<Sql>alter table PIC_INFO add VIDEO_ID bigint(20) default NULL;</Sql>
+	<Sql>alter table CHAN_INFO add YUV_FORMAT int(11);</Sql>
+	<Sql>alter table CHAN_INFO add VIDEO_BEGINTIME datetime;</Sql>
+	<Sql>alter table CHAN_INFO add VIDEO_ENDTIME datetime;</Sql>
+	<Sql>alter table CHAN_INFO add WORKMODE int(11);</Sql>
+	<Sql>alter table CHAN_INFO add CAMERAIP varchar(16);</Sql>
+	<Sql>alter table CHAN_INFO add CAM_MULTI_IP varchar(16);</Sql>
+	<Sql>alter table CHAN_INFO add CAMERASELF_ID int(11) default 0;</Sql>
+	<Sql>update CHAN_INFO set CAMERASELF_ID = 0;</Sql>
+	<Sql>alter table CHAN_INFO modify CHAN_PLACE varchar(64);</Sql> 
+	<Sql>alter table CHAN_INFO add REGISTER_ID varchar(48);</Sql>
+	<Sql>alter table TRAFFIC_EVENT_INFO add DIRECTION int(11);</Sql>
+	<Sql>alter table TRAFFIC_EVENT_INFO add TIMESECOND datetime;</Sql>
+	<Sql>alter table TRAFFIC_EVENT_INFO add MITIMESECOND int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add DIRECTION int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add VIDEOPATH varchar(255);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add VIDEOSAVE tinyint(4);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add TIMESECOND datetime;</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add MITIMESECOND int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add FLAG int default 0;</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add PIC_FLAG int default 0;</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add VIDEO_FLAG int default 0;</Sql>
+	<Sql>CREATE TABLE `NUMBER_PLATE_INFO_RECV` (
+  `ID` bigint(20) NOT NULL auto_increment,
+  `NUMBER` varchar(20) default NULL,
+  `COLOR` int(11) default NULL,
+  `CREDIT` int(11) default NULL,
+  `CHANNEL` int(11) default NULL,
+  `ROAD` int(11) default NULL,
+  `TIME` datetime default NULL,
+  `MITIME` int(11) default NULL,
+  `SMALLPICSIZE` int(11) default NULL,
+  `SMALLPICWIDTH` int(11) default NULL,
+  `SMALLPICHEIGHT` int(11) default NULL,
+  `PICSIZE` int(11) default NULL,
+  `PICWIDTH` int(11) default NULL,
+  `PICHEIGHT` int(11) default NULL,
+  `POSLEFT` int(11) default NULL,
+  `POSTOP` int(11) default NULL,
+  `POSRIGHT` int(11) default NULL,
+  `POSBOTTOM` int(11) default NULL,
+  `PICPATH` varchar(255) default NULL,
+  `SMALLPICPATH` varchar(255) default NULL,
+  `STATUS` tinyint(4) default NULL COMMENT '状态',
+  `CARCOLOR` int(11) default NULL COMMENT '车身颜色',
+  `TYPE` int(11) default NULL COMMENT '类型',
+  `FACTORY` int(11) default NULL COMMENT '厂家',
+  `SPEED` double default NULL,
+  `PIC_ID` bigint(20) default NULL,
+  `CARCOLORWEIGHT` int(11) default NULL,
+  `CARCOLORSECOND` int(11) default NULL,
+  `CARCOLORWEIGHTSECOND` int(11) default NULL,
+  `CARNUMBER_TYPE` int(11) default NULL,
+  `CONTOUR_WIDTH` int(11) default NULL,
+  `PECCANCY_KIND` int(11) default NULL,
+  `TYPE_DETAIL` int(11) default NULL,
+  `DIRECTION` int(11) default NULL,
+  `VIDEOPATH` varchar(255) default NULL,
+  `VIDEOSAVE` tinyint(4) default NULL,
+  `TIMESECOND` datetime default NULL,
+  `MITIMESECOND` int(11) default NULL,
+  `PLACE` varchar(255) default NULL,  
+  PRIMARY KEY  (`ID`),
+  KEY `TIME_INDEX` (`TIME`),
+  KEY `PATH_INDEX` (`PICPATH`),
+  KEY `STATUS_INDEX` (`STATUS`,`TIME`)) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add REDLIGHT_TIME int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add PLACE varchar(255);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add CrossingNumber varchar(32);</Sql>
+ 
+	<Sql>alter table NUMBER_PLATE_INFO add REDLIGHT_BEGIN_TIME datetime;</Sql>
+  <Sql>alter table NUMBER_PLATE_INFO add REDLIGHT_BEGIN_MITIME int(11);</Sql>
+  <Sql>alter table NUMBER_PLATE_INFO add REDLIGHT_END_TIME datetime;</Sql>
+  <Sql>alter table NUMBER_PLATE_INFO add REDLIGHT_END_MITIME int(11);</Sql> 
+  <Sql>alter table NUMBER_PLATE_INFO add LIMIT_SPEED int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add OVER_SPEED int(11);</Sql> 
+	<Sql>alter table NUMBER_PLATE_INFO add LATITUDE int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add LONGITUDE int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO_RECV add CrossingNumber varchar(32);</Sql>
+ 
+	<Sql>alter table NUMBER_PLATE_INFO add INDEX VIDEO_INDEX (`VIDEOPATH`);</Sql>
+ 
+	<Sql>alter table VIDEO_FILE_INFO add INDEX VIDEO_INDEX (`PATH`);</Sql>
+ 
+	<Sql>alter table TRAFFIC_EVENT_INFO add INDEX VIDEO_INDEX (`VIDEOPATH`);</Sql>
+	<Sql>CREATE TABLE `DEVICE_STATUS`(`JXDM` varchar(15) default NULL,`JCSJ` datetime default NULL,`ZTLX` varchar(15) default NULL,`ZTMS` int(11) default NULL,`YCXX` varchar(100) default NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8;</Sql>
+	<Sql>CREATE TABLE `VIDEO_RECORD` ( `ID` bigint(20) NOT NULL auto_increment,`VIDEOPATH` varchar(255) default NULL, `TYPE` int(11) default NULL, `FLAG` int(11) default NULL, PRIMARY KEY  (`ID`)) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</Sql>
+	<Sql>alter table CHAN_INFO add column DEVICE_ID varchar(32) default NULL</Sql>
+	<Sql>alter table VIDEO_RECORD add CAMERAID int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add SUBFACTORY int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add SUBTYPE_DETAIL int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add CAMERA_ID int(11);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add STATUS2 tinyint(4);</Sql>
+	<Sql>alter table NUMBER_PLATE_INFO add STATUS3 tinyint(4);</Sql>
+</UpdSqls>

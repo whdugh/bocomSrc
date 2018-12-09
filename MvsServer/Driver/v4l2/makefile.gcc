@@ -1,0 +1,14 @@
+OBJS = drv.o
+CC = gcc
+CFLAGS = -O2 
+
+#-Wall -ldl
+libV4l2.so:$(OBJS)
+	ar r libV4l2.a $(OBJS) 
+
+drv.o : v4l2_driver.c v4l2_driver.h
+	$(CC) $(CFLAGS) -c v4l2_driver.c -o drv.o
+
+
+clean:
+		rm -rf *.o libV4l2.a
